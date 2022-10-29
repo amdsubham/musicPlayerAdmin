@@ -1,7 +1,13 @@
 import { deleteWebsite } from "../firebase/api";
+import { Rate } from 'antd';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Card, Button } from 'antd';
+import _startCase from 'lodash/startCase'
+import _lowerCase from 'lodash/lowerCase'
+import _toNumber from 'lodash/toNumber'
 
+const { Meta } = Card;
 export function WebsiteCard({ link }) {
   const navigate = useNavigate();
 
@@ -16,29 +22,34 @@ export function WebsiteCard({ link }) {
   };
 
   return (
-    <div
-      className="card mb-3 card-website"
-      key={link.id}
+    <Card
+      hoverable
+      style={{ width: 240, padding: 10 }}
+      cover={<img alt="example" src={link.thumbnail} />}
       onClick={() => navigate(`/edit/${link.id}`)}
     >
-      <div className="card-body">
-        <div className="d-flex justify-content-between">
-          <h4>{link.name}</h4>
-          <button
-            className="btn btn-danger btn-sm d-flex align-items-center"
-            onClick={(e) => {
-              e.stopPropagation();
-              onDeleteLink(link.id);
-            }}
-          >
-            <i className="material-icons">close</i>
-          </button>
-        </div>
-        <p>{link.description}</p>
-        <a href={link.url} target="_blank" rel="noopener noreferrer">
-          Go to Website
-        </a>
+      <Meta title={_startCase(_lowerCase(link.name))} description="NA" />
+      <p>Genre : {link.genre}</p>
+      <Rate defaultValue={_toNumber(link.rating)} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', }}>
+
+        <Button type="primary" onClick={() => window.open(link.url, "_blank")} danger ghost>
+          Play Music
+        </Button>
+        <Button type="primary"
+
+          style={{ marginLeft: '1rem' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDeleteLink(link.id);
+          }} danger>
+          Delete
+        </Button>
+
       </div>
-    </div>
+
+    </Card >
   );
 }
+
+

@@ -2,6 +2,7 @@ import { WebsiteList } from "./components/WebsiteList";
 import { WebsiteForm } from "./components/WebsiteForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import 'antd/dist/antd.css';
 
 function App() {
   return (

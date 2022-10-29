@@ -7,7 +7,7 @@ export const Navbar = () => (
     <div className="container">
       <Link className="navbar-brand d-flex" to="/">
         <SiFirebase size="1.5rem" className="me-2" />
-        ReactFire CRUD
+        Music Player Admin
       </Link>
       <button
         className="navbar-toggler"
@@ -28,7 +28,7 @@ export const Navbar = () => (
               to="/add"
             >
               <AiOutlineSave className="me-1" size="1.5rem" />
-              Save a Website
+              Add Music
             </Link>
           </li>
         </ul>

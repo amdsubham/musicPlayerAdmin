@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./config";
 
-const collectionName = "websites";
+const collectionName = "music";
 
 export const saveWebsite = (newLink) =>
   addDoc(collection(db, collectionName), newLink);

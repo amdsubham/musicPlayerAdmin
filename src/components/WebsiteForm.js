@@ -20,7 +20,13 @@ export const WebsiteForm = (props) => {
   const navigate = useNavigate();
 
   const handleInputChange = ({ target: { name, value } }) => {
-    setWebsite({ ...website, [name]: _lowerCase(_toString(value)) });
+    console.log('name', name)
+    if (name === 'thumbnail' || name === 'url') {
+      setWebsite({ ...website, [name]: value });
+    }
+    else {
+      setWebsite({ ...website, [name]: _lowerCase(_toString(value)) });
+    }
   }
 
 
